@@ -454,4 +454,37 @@ namespace OLED12864_I2C {
     clear();
     _ZOOM = 1;
   }
+  
+
+    export function getScreen(): number[] {
+        return _screen;
+    }
+    export function getAddr(): number {
+        return _I2CAddr;
+    }
+    export function getZoom(): number {
+        return _ZOOM;
+    }
+    export function drawPicBy1024Hex(im: number[]): void {
+        _screen[0] = 0x40
+        for (let i = 0; i < 1024; i++) {
+            _screen[i + 1] = im[i]
+            if(im[i] == 0){
+                _screen[i + 1] = 0x00
+            }
+        }
+        pins.i2cWriteBuffer(_I2CAddr, _screen)
+        // let _screen = pins.createBuffer(1025);
+        // _screen[0] = 0x40
+        // _screen[1] = 0xff
+        // _screen[2] = 0x01
+        // pins.i2cWriteBuffer(60, _screen)
+    }
+    export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
+        for (let y = yStart; y < yStart + height; y++) {
+            for (let x = xStart; x < xStart + width; x++) {
+                pixel(x, y, color);
+            }
+        }
+    }
 }
