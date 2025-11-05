@@ -459,13 +459,16 @@ namespace OLED12864_I2C {
     export function getScreen(): number[] {
         return _screen;
     }
+    export function setScreen(screen: number[]): void {
+        _screen = screen;
+    }
     export function getAddr(): number {
         return _I2CAddr;
     }
     export function getZoom(): number {
         return _ZOOM;
     }
-    export function drawPicBy1024Hex(im: number[]): void {
+    export function drawPicByZiped1024Hex(im: number[]): void {
         _screen[0] = 0x40
         for (let i = 0; i < 1024; i++) {
             _screen[i + 1] = im[i]
@@ -487,4 +490,5 @@ namespace OLED12864_I2C {
             }
         }
     }
+    //todo:滚动、旋转
 }
