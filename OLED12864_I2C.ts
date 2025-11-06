@@ -449,10 +449,10 @@ namespace OLED12864_I2C {
     cmd2(0xd9, 0xf1); // SSD1306_SETPRECHARGE
     cmd2(0xdb, 0x40); // SSD1306_SETVCOMDETECT
     cmd1(0xa6); // SSD1306_NORMALDISPLAY
-    cmd2(0xd6, 1); // zoom on
+    cmd2(0xd6, 0); // zoom off
     cmd1(0xaf); // SSD1306_DISPLAYON
     clear();
-    _ZOOM = 1;
+    _ZOOM = 0;
   }
   
 
@@ -482,6 +482,10 @@ namespace OLED12864_I2C {
         // _screen[1] = 0xff
         // _screen[2] = 0x01
         // pins.i2cWriteBuffer(60, _screen)
+    }
+    export function drawPicByRaw1024Hex(screen: number[]): void {
+        _screen = screen;
+        pins.i2cWriteBuffer(_I2CAddr, _screen)
     }
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         for (let y = yStart; y < yStart + height; y++) {
