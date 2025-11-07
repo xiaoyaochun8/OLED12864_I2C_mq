@@ -468,24 +468,24 @@ namespace OLED12864_I2C {
     export function getZoom(): number {
         return _ZOOM;
     }
-    export function drawPicByZiped1024Hex(im: number[]): void {
-        _screen[0] = 0x40
+    export function drawPicByZiped1024Hex(arr: number[]): void {
+        _screen[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
-            _screen[i + 1] = im[i]
-            if(im[i] == 0){
-                _screen[i + 1] = 0x00
-            }
+            _screen[i + 1] = arr[i];
+            //if(arr[i] == 0){
+            //    _screen[i + 1] = 0x00;
+            //}
         }
-        pins.i2cWriteBuffer(_I2CAddr, _screen)
+        pins.i2cWriteBuffer(_I2CAddr, _screen);
         // let _screen = pins.createBuffer(1025);
-        // _screen[0] = 0x40
-        // _screen[1] = 0xff
-        // _screen[2] = 0x01
-        // pins.i2cWriteBuffer(60, _screen)
+        // _screen[0] = 0x40;
+        // _screen[1] = 0xff;
+        // _screen[2] = 0x01;
+        // pins.i2cWriteBuffer(60, _screen);
     }
-    export function drawPicByRaw1024Hex(screen: number[]): void {
+    export function drawPicByRaw1025Hex(screen: number[]): void {
         _screen = screen;
-        pins.i2cWriteBuffer(_I2CAddr, _screen)
+        pins.i2cWriteBuffer(_I2CAddr, _screen);
     }
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         for (let y = yStart; y < yStart + height; y++) {
