@@ -456,10 +456,10 @@ namespace OLED12864_I2C {
   }
   
 
-    export function getScreen(): number[] {
+    export function getScreen(): Buffer {
         return _screen;
     }
-    export function setScreen(screen: number[]): void {
+    export function setScreen(screen: Buffer): void {
         _screen = screen;
     }
     export function getAddr(): number {
@@ -469,14 +469,14 @@ namespace OLED12864_I2C {
         return _ZOOM;
     }
     export function drawPicBy1024Hex(arr: number[]): void {
-        //_screen[0] = 0x40; //64
-        //for (let i = 0; i < 1024; i++) {
-        //    _screen[i + 1] = arr[i];
+        _screen[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+           _screen[i + 1] = arr[i];
         //    if(arr[i] == 0){
         //        _screen[i + 1] = 0x00;
         //    }
-        //}
-        _screen.unshift(0x40);
+        }
+        // _screen.unshift(0x40);
         pins.i2cWriteBuffer(_I2CAddr, _screen);
         // let _screen = pins.createBuffer(1025);
         // _screen[0] = 0x40;
@@ -484,7 +484,7 @@ namespace OLED12864_I2C {
         // _screen[2] = 0x01;
         // pins.i2cWriteBuffer(60, _screen);
     }
-    export function drawPicByRaw1025Hex(screen: number[]): void {
+    export function drawPicByRaw1025Hex(screen: Buffer): void {
         _screen = screen;
         pins.i2cWriteBuffer(_I2CAddr, _screen);
     }
