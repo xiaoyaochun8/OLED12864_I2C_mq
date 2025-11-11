@@ -469,15 +469,18 @@ namespace OLED12864_I2C {
         return _ZOOM;
     }
     export function drawPicBy1024Hex(arr: number[]): void {
-        _screen[0] = 0x40; //64
-        for (let i = 0; i < 1024; i++) {
-           _screen[i + 1] = arr[i];
-        //    if(arr[i] == 0){
-        //        _screen[i + 1] = 0x00;
-        //    }
-        }
-        // _screen.unshift(0x40);
-        pins.i2cWriteBuffer(_I2CAddr, _screen);
+        // _screen[0] = 0x40; //64
+        // for (let i = 0; i < 1024; i++) {
+        //    _screen[i + 1] = arr[i];
+        // //    if(arr[i] == 0){
+        // //        _screen[i + 1] = 0x00;
+        // //    }
+        // }
+        // // _screen.unshift(0x40);
+        // pins.i2cWriteBuffer(_I2CAddr, _screen);
+        const arr0 = [0x40];
+        arr0.push(..arr)
+        pins.i2cWriteBuffer(_I2CAddr, arr0);
         // let _screen = pins.createBuffer(1025);
         // _screen[0] = 0x40;
         // _screen[1] = 0xff;
