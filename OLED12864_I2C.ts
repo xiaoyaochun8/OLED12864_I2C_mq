@@ -470,6 +470,9 @@ namespace OLED12864_I2C {
     }
     export function drawPicBy1024Hex(arr1024: number[]): void {
         _screen[0] = 0x40; //64
+        //完整的1024数据覆盖
+        //或 部分数据覆盖
+        //或 判断性覆盖（合并）
         for (let i = 0; i < 1024; i++) {
            _screen[i + 1] = arr1024[i];
         //    if(arr1024[i] == 0){
