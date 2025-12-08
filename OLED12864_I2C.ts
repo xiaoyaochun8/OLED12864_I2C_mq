@@ -455,16 +455,27 @@ namespace OLED12864_I2C {
     _ZOOM = 0;
   }
   
-
+    /**
+     * OLED getScreen Buffer
+     */
+    //% block
     export function getScreen(): Buffer {
         return _screen;
     }
     export function setScreen(screen: Buffer): void {
         _screen = screen;
     }
+    /**
+     * OLED getAddr
+     */
+    //% block
     export function getAddr(): number {
         return _I2CAddr;
     }
+    /**
+     * OLED getZoom
+     */
+    //% block
     export function getZoom(): number {
         return _ZOOM;
     }
