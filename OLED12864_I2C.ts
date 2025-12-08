@@ -479,7 +479,7 @@ namespace OLED12864_I2C {
     export function getZoom(): number {
         return _ZOOM;
     }
-    export function drawPicBy1024Hex(arr1024: number[]): void {
+    export function drawByArr1024(arr1024: number[]): void {
         _screen[0] = 0x40; //64
         //完整的1024数据覆盖
         //或 部分数据覆盖
@@ -501,8 +501,7 @@ namespace OLED12864_I2C {
         // _screen[2] = 0x01;
         // pins.i2cWriteBuffer(60, _screen);
     }
-    export function drawPicByRaw1025Hex(screen: Buffer): void {
-        _screen = screen;
+    export function drawByScreen1025(): void {
         pins.i2cWriteBuffer(_I2CAddr, _screen);
     }
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
