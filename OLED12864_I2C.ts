@@ -412,6 +412,7 @@ namespace OLED12864_I2C {
    */
   //% blockId="OLED12864_I2C_FILLEDCIRCLE"
   //% block="draw filled circle at x %x|y %y|radius %r|color %color"
+  //% weight=70 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function filledCircle(x: number, y: number, r: number, color: number = 1) {
       for (let j = 0; j <= r; j++) {
