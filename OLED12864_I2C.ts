@@ -508,7 +508,7 @@ namespace OLED12864_I2C {
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         for (let y = yStart; y < yStart + height; y++) {
             for (let x = xStart; x < xStart + width; x++) {
-                pixel(x, y, color);
+                pixelM(x, y, color);
             }
         }
     }
