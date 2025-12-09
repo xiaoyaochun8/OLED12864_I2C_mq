@@ -512,5 +512,25 @@ namespace OLED12864_I2C {
             }
         }
     }
+    /**
+     * set pixelM in OLED
+     * @param x is X alis, eg: 0
+     * @param y is Y alis, eg: 0
+     * @param color is dot color, eg: 1
+     */
+    //% block="set pixelM at x %x|y %y|color %color"
+    //% weight=70 blockGap=8
+    //% parts=OLED12864_I2C trackArgs=0
+    export function pixelM(x: number, y: number, color: number = 1) {
+        let page = y >> 3;
+        let shift_page = y % 8;
+        let ind = x * (0 + 1) + page * 128 + 1;
+        let b = _screen[ind] | (1 << shift_page);
+        _screen[ind] = b;
+        //e.g.
+        //clear()
+        //pixelM()
+        //draw()
+    }
     //todo:滚动、旋转
 }
