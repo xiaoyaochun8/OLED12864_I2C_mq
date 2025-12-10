@@ -564,10 +564,7 @@ namespace OLED12864_I2C {
           if (_ZOOM) _screen[ind + 1] = col;
         }
       }
-      set_pos(x * 5, y);
-      let ind0 = x * 5 * (_ZOOM + 1) + y * 128;
-      let buf = _screen.slice(ind0, ind + 1);
-      buf[0] = 0x40;
+      _screen[0] = 0x40;
     }
     //todo:滚动、旋转
 }
