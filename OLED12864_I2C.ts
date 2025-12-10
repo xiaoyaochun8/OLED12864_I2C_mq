@@ -508,29 +508,66 @@ namespace OLED12864_I2C {
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         for (let y = yStart; y < yStart + height; y++) {
             for (let x = xStart; x < xStart + width; x++) {
-                pixelM(x, y, color);
+                setPixelData(x, y, color);
             }
         }
     }
     /**
-     * set pixelM in OLED
+     * set pixel
      * @param x is X alis, eg: 0
      * @param y is Y alis, eg: 0
      * @param color is dot color, eg: 1
      */
-    //% block="set pixelM at x %x|y %y|color %color"
+    //% block="setPixelData at x %x|y %y|color %color"
     //% weight=70 blockGap=8
     //% parts=OLED12864_I2C trackArgs=0
-    export function pixelM(x: number, y: number, color: number = 1) {
+    export function setPixelData(x: number, y: number, color: number = 1) {
         let page = y >> 3;
         let shift_page = y % 8;
         let ind = x * (0 + 1) + page * 128 + 1;
-        let b = _screen[ind] | (1 << shift_page);
+        let b = color ? _screen[ind] | (1 << shift_page) : clrbit(_screen[ind], shift_page);
         _screen[ind] = b;
         //e.g.
         //clear()
         //pixelM()
         //draw()
+    }
+    /**
+     * set text
+     * @param x is X alis, eg: 0
+     * @param y is Y alis, eg: 0
+     * @param s is the text will be show, eg: 'Hello!'
+     * @param color is string color, eg: 1
+     */
+    //% block="setStringData at x %x|y %y|text %s|color %color"
+    //% weight=80 blockGap=8
+    //% parts=OLED12864_I2C trackArgs=0
+    export function setStringData(
+      x: number,
+      y: number,
+      s: string,
+      color: number = 1
+    ) {
+      let col = 0;
+      let p = 0;
+      let ind = 0;
+      for (let n = 0; n < s.length; n++) {
+        p = font[s.charCodeAt(n)];
+        for (let i = 0; i < 5; i++) {
+          col = 0;
+          for (let j = 0; j < 5; j++) {
+            if (p & (1 << (5 * i + j))) col |= 1 << (j + 1);
+          }
+          ind = (x + n) * 5 * (_ZOOM + 1) + y * 128 + i * (_ZOOM + 1) + 1;
+          if (color == 0) col = 255 - col;
+          _screen[ind] = col;
+          if (_ZOOM) _screen[ind + 1] = col;
+        }
+      }
+      set_pos(x * 5, y);
+      let ind0 = x * 5 * (_ZOOM + 1) + y * 128;
+      let buf = _screen.slice(ind0, ind + 1);
+      buf[0] = 0x40;
     }
     //todo:滚动、旋转
 }
