@@ -519,7 +519,7 @@ namespace OLED12864_I2C {
      * @param color is dot color, eg: 1
      */
     //% block="setPixelData at x %x|y %y|color %color"
-    //% weight=70 blockGap=8
+    //% weight=50 blockGap=8
     //% parts=OLED12864_I2C trackArgs=0
     export function setPixelData(x: number, y: number, color: number = 1) {
         let page = y >> 3;
@@ -540,7 +540,7 @@ namespace OLED12864_I2C {
      * @param color is string color, eg: 1
      */
     //% block="setStringData at x %x|y %y|text %s|color %color"
-    //% weight=80 blockGap=8
+    //% weight=50 blockGap=8
     //% parts=OLED12864_I2C trackArgs=0
     export function setStringData(
       x: number,
