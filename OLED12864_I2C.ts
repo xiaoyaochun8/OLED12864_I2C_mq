@@ -547,7 +547,7 @@ namespace OLED12864_I2C {
      * @param color is string color, eg: 1
      */
     //% block="setStringData at x %x|y %y|text %s|color %color"
-    //% weight=50 blockGap=8
+    //% weight=49 blockGap=8
     //% parts=OLED12864_I2C trackArgs=0
     export function setStringData(
       x: number,
@@ -577,5 +577,38 @@ namespace OLED12864_I2C {
       //setStringData()
       //draw()
     }
+    /**
+     * Create a 128x64 pixel matrix for use as a custom character.
+     */
+    //% weight=48
+    //% imageLiteral=1
+    //% imageLiteralColumns=128
+    //% imageLiteralRows=64
+    //% imageLiteralScale=1
+    //% shim=images::createImage
+    export function oledCharacterPixels12864(i: string): Image {
+        return <Image><any>i;
+    }
+    /**
+     * Create a 128x64 pixel matrix for use as a custom character.
+     */
+    //% weight=47
+    export function oledDrawImgWithPixels12864(im: Image): void {
+        for (let y = 0; y < 64; y++) {
+            for (let x = 0; x < 128; x++) {
+                if (im.pixel(x, y)) {
+                    setPixelData(x, y, 1)
+                }
+            }
+        }
+        draw()
+    }
+    //% weight=46
+    //% block="矩形区域橡皮檫 在位置x $xStart, y $yStart, 宽度 $width 高度 $height 颜色 $color"
+    export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
+        clearRectArea(xStart, yStart, width, height, color)
+        draw()
+    }
+    
     //todo:滚动、旋转
 }
