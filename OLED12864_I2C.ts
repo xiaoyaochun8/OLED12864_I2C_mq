@@ -503,7 +503,11 @@ namespace OLED12864_I2C {
         // pins.i2cWriteBuffer(60, _screen);
     }
     export function drawByScreen1025(): void {
-        pins.i2cWriteBuffer(_I2CAddr, _screen);
+        //pins.i2cWriteBuffer(_I2CAddr, _screen);
+        //e.g.
+        //getScreen()
+        //setScreen()
+        //draw()
     }
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         for (let y = yStart; y < yStart + height; y++) {
@@ -511,6 +515,9 @@ namespace OLED12864_I2C {
                 setPixelData(x, y, color);
             }
         }
+        //e.g.
+        //clearRectArea()
+        //draw()
     }
     /**
      * set pixel
@@ -529,7 +536,7 @@ namespace OLED12864_I2C {
         _screen[ind] = b;
         //e.g.
         //clear()
-        //pixelM()
+        //setPixelData()
         //draw()
     }
     /**
@@ -565,6 +572,10 @@ namespace OLED12864_I2C {
         }
       }
       _screen[0] = 0x40;
+      //e.g.
+      //clear()
+      //setStringData()
+      //draw()
     }
     //todo:滚动、旋转
 }
