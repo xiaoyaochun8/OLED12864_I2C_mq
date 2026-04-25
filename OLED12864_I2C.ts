@@ -580,18 +580,6 @@ namespace OLED12864_I2C {
     /**
      * Create a 128x64 pixel matrix for use as a custom character.
      */
-    //% weight=48
-    //% imageLiteral=1
-    //% imageLiteralColumns=128
-    //% imageLiteralRows=64
-    //% imageLiteralScale=1
-    //% shim=images::createImage
-    export function oledCharacterPixels12864(i: string): Image {
-        return <Image><any>i;
-    }
-    /**
-     * Create a 128x64 pixel matrix for use as a custom character.
-     */
     //% weight=47
     export function oledDrawImgWithPixels12864(im: Image): void {
         for (let y = 0; y < 64; y++) {
