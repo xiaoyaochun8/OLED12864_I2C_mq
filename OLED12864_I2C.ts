@@ -456,27 +456,20 @@ namespace OLED12864_I2C {
     _ZOOM = 0;
   }
   
+
+
     /**
-     * OLED getScreen Buffer
+     * expand func
      */
-    //% block
     export function getScreen(): Buffer {
         return _screen;
     }
     export function setScreen(screen: Buffer): void {
         _screen = screen;
     }
-    /**
-     * OLED getAddr
-     */
-    //% block
     export function getAddr(): number {
         return _I2CAddr;
     }
-    /**
-     * OLED getZoom
-     */
-    //% block
     export function getZoom(): number {
         return _ZOOM;
     }
@@ -519,15 +512,6 @@ namespace OLED12864_I2C {
         //clearRectArea()
         //draw()
     }
-    /**
-     * set pixel
-     * @param x is X alis, eg: 0
-     * @param y is Y alis, eg: 0
-     * @param color is dot color, eg: 1
-     */
-    //% block="setPixelData at x %x|y %y|color %color"
-    //% weight=50 blockGap=8
-    //% parts=OLED12864_I2C trackArgs=0
     export function setPixelData(x: number, y: number, color: number = 1) {
         let page = y >> 3;
         let shift_page = y % 8;
@@ -539,16 +523,6 @@ namespace OLED12864_I2C {
         //setPixelData()
         //draw()
     }
-    /**
-     * draw an outlined circle
-     * @param x is the x coordinate of the center, eg: 0
-     * @param y is the y coordinate of the center, eg: 0
-     * @param r is the radius of the circle, eg: 10
-     * @param color is the color of the circle, eg: 1
-     */
-    //% block="setOutlinedCircleData at x %x|y %y|radius %r|color %color"
-    //% weight=49 blockGap=8
-    //% parts=OLED12864_I2C trackArgs=0
     export function setOutlinedCircleData(x: number, y: number, r: number, color: number = 1) {
         const step = 1 / r;
         for (let theta = 0; theta < 2 * Math.PI; theta += step) {
@@ -557,16 +531,6 @@ namespace OLED12864_I2C {
             setPixelData(xPos, yPos, color);
         }
     }
-    /**
-     * set text
-     * @param x is X alis, eg: 0
-     * @param y is Y alis, eg: 0
-     * @param s is the text will be show, eg: 'Hello!'
-     * @param color is string color, eg: 1
-     */
-    //% block="setStringData at x %x|y %y|text %s|color %color"
-    //% weight=49 blockGap=8
-    //% parts=OLED12864_I2C trackArgs=0
     export function setStringData(
       x: number,
       y: number,
@@ -598,7 +562,6 @@ namespace OLED12864_I2C {
     /**
      * Create a 128x64 pixel matrix for use as a custom character.
      */
-    //% weight=47
     export function oledDrawImgWithPixels12864(im: Image): void {
         for (let y = 0; y < 64; y++) {
             for (let x = 0; x < 128; x++) {
@@ -609,6 +572,12 @@ namespace OLED12864_I2C {
         }
         draw()
     }
+
+
+
+    /**
+     * expand block
+     */
     //% weight=46
     //% block="矩形区域橡皮檫 在位置x $xStart, y $yStart, 宽度 $width 高度 $height 颜色 $color"
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
@@ -663,7 +632,6 @@ namespace OLED12864_I2C {
 
         return points;
     }
-
     /**
      * 画直线（带间隔）+ 返回坐标
      * @param x0 起点
@@ -690,6 +658,8 @@ namespace OLED12864_I2C {
         return pts;
         // serial.writeLine(`x=${pts.x}, y=${pts.y}`);
     }
+
+
 
     //todo:滚动、旋转
 }
