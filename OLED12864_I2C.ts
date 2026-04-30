@@ -652,7 +652,7 @@ namespace OLED12864_I2C {
         const pts = getLinePoints(x0, y0, x1, y1, step);
         // 实际画点
         for (const p of pts) {
-            setPixelData(p.x, p.y, 1)
+            setPixelData(p.x, p.y, color)
         }
         draw()
         return pts;
