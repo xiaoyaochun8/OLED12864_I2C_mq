@@ -597,6 +597,81 @@ namespace OLED12864_I2C {
         clearRectArea(xStart, yStart, width, height, color)
         draw()
     }
-    
+    /**
+     * 生成两点之间的直线坐标，支持点间隔（步长）
+     * @param x0 起点 X
+     * @param y0 起点 Y
+     * @param x1 终点 X
+     * @param y1 终点 Y
+     * @param step 点间隔（每隔 step 个像素取一个点，默认 1）
+     * @returns 坐标数组 {x,y}[]
+     */
+    export function getLinePoints(
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+        step: number = 1
+    ): Array<{ x: number, y: number }> {
+        const points: Array<{ x: number, y: number }> = [];
+        let counter = 0; // 间隔计数
+
+        let dx = Math.abs(x1 - x0);
+        let dy = -Math.abs(y1 - y0);
+        const sx = x0 < x1 ? 1 : -1;
+        const sy = y0 < y1 ? 1 : -1;
+        let err = dx + dy;
+
+        while (true) {
+            // 按间隔取点
+            if (counter % step === 0) {
+                points.push({ x: x0, y: y0 });
+            }
+            counter++;
+
+            // 到达终点退出
+            if (x0 === x1 && y0 === y1) break;
+
+            const e2 = 2 * err;
+            if (e2 >= dy) {
+                err += dy;
+                x0 += sx;
+            }
+            if (e2 <= dx) {
+                err += dx;
+                y0 += sy;
+            }
+        }
+
+        return points;
+    }
+
+    /**
+     * 画直线（带间隔）+ 返回坐标
+     * @param x0 起点
+     * @param y0 起点
+     * @param x1 终点
+     * @param y1 终点
+     * @param step 间隔
+     * @param color 颜色 1亮 0灭
+     */
+    //% weight=45
+    //% block="画直线 起点位置x0 $x0 y0 $y0 终点位置x1 $x1 y1 $y1 颜色 $color 间隔 $step"
+    function drawLine(
+        x0: number, y0: number,
+        x1: number, y1: number,
+        step: number = 1,
+        color: number = 1
+    ): Array<{ x: number, y: number }> {
+        const pts = getLinePoints(x0, y0, x1, y1, step);
+        // 实际画点
+        for (const p of pts) {
+            setPixelData(p.x, p.y, 1)
+        }
+        draw()
+        return pts;
+        // serial.writeLine(`x=${pts.x}, y=${pts.y}`);
+    }
+
     //todo:滚动、旋转
 }
