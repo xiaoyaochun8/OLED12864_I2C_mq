@@ -657,7 +657,7 @@ namespace OLED12864_I2C {
      */
     //% weight=45
     //% block="画直线 起点位置x0 $x0 y0 $y0 终点位置x1 $x1 y1 $y1 颜色 $color 间隔 $step"
-    function drawLine(
+    export function drawLine(
         x0: number, y0: number,
         x1: number, y1: number,
         step: number = 1,
