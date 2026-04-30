@@ -540,6 +540,24 @@ namespace OLED12864_I2C {
         //draw()
     }
     /**
+     * draw an outlined circle
+     * @param x is the x coordinate of the center, eg: 0
+     * @param y is the y coordinate of the center, eg: 0
+     * @param r is the radius of the circle, eg: 10
+     * @param color is the color of the circle, eg: 1
+     */
+    //% block="setOutlinedCircleData at x %x|y %y|radius %r|color %color"
+    //% weight=49 blockGap=8
+    //% parts=OLED12864_I2C trackArgs=0
+    export function setOutlinedCircleData(x: number, y: number, r: number, color: number = 1) {
+        const step = 1 / r;
+        for (let theta = 0; theta < 2 * Math.PI; theta += step) {
+            let xPos = x + Math.round(r * Math.cos(theta));
+            let yPos = y + Math.round(r * Math.sin(theta));
+            setPixelData(xPos, yPos, color);
+        }
+    }
+    /**
      * set text
      * @param x is X alis, eg: 0
      * @param y is Y alis, eg: 0
