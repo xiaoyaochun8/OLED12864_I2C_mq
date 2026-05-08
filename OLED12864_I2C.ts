@@ -433,25 +433,25 @@ namespace OLED12864_I2C {
   //% parts=OLED12864_I2C trackArgs=0
   export function init(addr: number) {
     _I2CAddr = addr;
-    cmd1(0xae); // SSD1306_DISPLAYOFF
-    cmd1(0xa4); // SSD1306_DISPLAYALLON_RESUME
-    cmd2(0xd5, 0xf0); // SSD1306_SETDISPLAYCLOCKDIV
-    cmd2(0xa8, 0x3f); // SSD1306_SETMULTIPLEX
-    cmd2(0xd3, 0x00); // SSD1306_SETDISPLAYOFFSET
-    cmd1(0 | 0x0); // line #SSD1306_SETSTARTLINE
-    cmd2(0x8d, 0x14); // SSD1306_CHARGEPUMP
-    cmd2(0x20, 0x00); // SSD1306_MEMORYMODE
-    cmd3(0x21, 0, 127); // SSD1306_COLUMNADDR
-    cmd3(0x22, 0, 63); // SSD1306_PAGEADDR
-    cmd1(0xa0 | 0x1); // SSD1306_SEGREMAP
-    cmd1(0xc8); // SSD1306_COMSCANDEC
-    cmd2(0xda, 0x12); // SSD1306_SETCOMPINS
-    cmd2(0x81, 0xcf); // SSD1306_SETCONTRAST
-    cmd2(0xd9, 0xf1); // SSD1306_SETPRECHARGE
-    cmd2(0xdb, 0x40); // SSD1306_SETVCOMDETECT
-    cmd1(0xa6); // SSD1306_NORMALDISPLAY
+    cmd1(0xae); // SSD1306_DISPLAYOFF displayOff
+    cmd1(0xa4); // SSD1306_DISPLAYALLON_RESUME displayAllon_resume
+    cmd2(0xd5, 0xf0); // SSD1306_SETDISPLAYCLOCKDIV setDisplayClockDiv
+    cmd2(0xa8, 0x3f); // SSD1306_SETMULTIPLEX setMultiplex
+    cmd2(0xd3, 0x00); // SSD1306_SETDISPLAYOFFSET setDisplayOffSet
+    cmd1(0 | 0x0); // line #SSD1306_SETSTARTLINE setStartLine
+    cmd2(0x8d, 0x14); // SSD1306_CHARGEPUMP chargePump
+    cmd2(0x20, 0x00); // SSD1306_MEMORYMODE memoryMode
+    cmd3(0x21, 0, 127); // SSD1306_COLUMNADDR columnAddr
+    cmd3(0x22, 0, 63); // SSD1306_PAGEADDR pageAddr
+    cmd1(0xa0 | 0x1); // SSD1306_SEGREMAP segremap
+    cmd1(0xc8); // SSD1306_COMSCANDEC comScanDec
+    cmd2(0xda, 0x12); // SSD1306_SETCOMPINS setComPins
+    cmd2(0x81, 0xcf); // SSD1306_SETCONTRAST setContrast
+    cmd2(0xd9, 0xf1); // SSD1306_SETPRECHARGE setPreCharge
+    cmd2(0xdb, 0x40); // SSD1306_SETVCOMDETECT setVComDetect
+    cmd1(0xa6); // SSD1306_NORMALDISPLAY normalDisplay
     cmd2(0xd6, 0); // zoom off
-    cmd1(0xaf); // SSD1306_DISPLAYON
+    cmd1(0xaf); // SSD1306_DISPLAYON displayOn
     clear();
     _ZOOM = 0;
   }
