@@ -578,7 +578,7 @@ namespace OLED12864_I2C {
     /**
      * expand block
      */
-    //% block="oled画实心矩形 位置x $xStart, y $yStart, 宽度 $width 高度 $height 颜色 $color"
+    //% block="oled画实心矩形 位置 x $xStart|y $yStart|宽度 $width|高度 $height|颜色 $color"
     //% weight=90
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         clearRectArea(xStart, yStart, width, height, color)
@@ -641,9 +641,7 @@ namespace OLED12864_I2C {
      * @param step 间隔
      * @param color 颜色 1亮 0灭
      */
-    //% block="oled画直线 起点位置 x0 $x0 y0 $y0 终点位置 x1 $x1 y1 $y1 颜色 $color 间隔 $step"
-    //% weight=92
-    export function drawLine(
+    export function drawLineAndReturn(
         x0: number, y0: number,
         x1: number, y1: number,
         step: number = 1,
@@ -657,6 +655,21 @@ namespace OLED12864_I2C {
         draw()
         return pts;
         // serial.writeLine(`x=${pts.x}, y=${pts.y}`);
+    }
+	//% block="oled画直线 起点位置 x0 $x0|y0 $y0|终点位置 x1 $x1|y1 $y1|颜色 $color|间隔 $step"
+    //% weight=92
+    export function drawLine(
+        x0: number, y0: number,
+        x1: number, y1: number,
+        step: number = 1,
+        color: number = 1
+    ): void {
+        const pts = getLinePoints(x0, y0, x1, y1, step);
+        // 实际画点
+        for (const p of pts) {
+            setPixelData(p.x, p.y, color)
+        }
+        draw()
     }
 
 
