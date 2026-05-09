@@ -323,7 +323,7 @@ namespace OLED12864_I2C {
    * @param d true: invert / false: normal, eg: true
    */
   //% blockId="OLED12864_I2C_INVERT" block="invert display %d"
-  //% weight=65 blockGap=8
+  //% weight=48 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function invert(d: boolean = true) {
     let n = d ? 0xa7 : 0xa6;
@@ -334,7 +334,7 @@ namespace OLED12864_I2C {
    * draw / redraw screen
    */
   //% blockId="OLED12864_I2C_DRAW" block="draw"
-  //% weight=64 blockGap=8
+  //% weight=49 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function draw() {
     set_pos();
@@ -378,7 +378,7 @@ namespace OLED12864_I2C {
    * @param d true zoom / false normal, eg: true
    */
   //% blockId="OLED12864_I2C_ZOOM" block="zoom %d"
-  //% weight=60 blockGap=8
+  //% weight=47 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function zoom(d: boolean = true) {
     _ZOOM = d ? 1 : 0;
