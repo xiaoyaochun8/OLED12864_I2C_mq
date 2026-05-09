@@ -271,8 +271,8 @@ namespace OLED12864_I2C {
    * @param len is the length of line, eg: 10
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_HLINE" block="draw a horizontal line at x %x|y %y|number %len|color %color"
-  //% weight=71 blockGap=8
+  //% blockId="OLED12864_I2C_HLINE" block="oled画横线 位置 x %x|y %y|number %len|color %color"
+  //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function hline(x: number, y: number, len: number, color: number = 1) {
     for (let i = x; i < x + len; i++) pixel(i, y, color);
@@ -285,8 +285,8 @@ namespace OLED12864_I2C {
    * @param len is the length of line, eg: 10
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_VLINE" block="draw a vertical line at x %x|y %y|number %len|color %color"
-  //% weight=72 blockGap=8
+  //% blockId="OLED12864_I2C_VLINE" block="oled画竖线 位置 x %x|y %y|number %len|color %color"
+  //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function vline(x: number, y: number, len: number, color: number = 1) {
     for (let i = y; i < y + len; i++) pixel(x, i, color);
@@ -300,8 +300,8 @@ namespace OLED12864_I2C {
    * @param y2 is Y alis, eg: 30
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_RECT" block="draw a rectangle at x1 %x1|y1 %y1|x2 %x2|y2 %y2|color %color"
-  //% weight=73 blockGap=8
+  //% blockId="OLED12864_I2C_RECT" block="oled画空心矩形 位置 x1 %x1|y1 %y1|x2 %x2|y2 %y2|color %color"
+  //% weight=91 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function rect(
     x1: number,
@@ -392,8 +392,8 @@ namespace OLED12864_I2C {
    * @param color is the color of the circle, eg: 1
    */
   //% blockId="OLED12864_I2C_OUTLINEDCIRCLE"
-  //% block="draw outlined circle at x %x|y %y|radius %r|color %color"
-  //% weight=70 blockGap=8
+  //% block="oled画实心圆形 位置 x %x|y %y|radius %r|color %color"
+  //% weight=88 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function outlinedCircle(x: number, y: number, r: number, color: number = 1) {
       const step = 1 / r;
@@ -411,8 +411,8 @@ namespace OLED12864_I2C {
    * @param color is the color of the circle, eg: 1
    */
   //% blockId="OLED12864_I2C_FILLEDCIRCLE"
-  //% block="draw filled circle at x %x|y %y|radius %r|color %color"
-  //% weight=70 blockGap=8
+  //% block="oled画空心圆形 位置 x %x|y %y|radius %r|color %color"
+  //% weight=89 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function filledCircle(x: number, y: number, r: number, color: number = 1) {
       for (let j = 0; j <= r; j++) {
@@ -641,8 +641,8 @@ namespace OLED12864_I2C {
      * @param step 间隔
      * @param color 颜色 1亮 0灭
      */
-    //% weight=45
-    //% block="画直线 起点位置x0 $x0 y0 $y0 终点位置x1 $x1 y1 $y1 颜色 $color 间隔 $step"
+    //% block="oled画竖线 起点位置x0 $x0 y0 $y0 终点位置x1 $x1 y1 $y1 颜色 $color 间隔 $step"
+    //% weight=92
     export function drawLine(
         x0: number, y0: number,
         x1: number, y1: number,
