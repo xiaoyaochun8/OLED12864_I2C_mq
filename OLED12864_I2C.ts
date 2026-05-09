@@ -578,8 +578,8 @@ namespace OLED12864_I2C {
     /**
      * expand block
      */
-    //% weight=46
-    //% block="矩形区域橡皮檫 在位置x $xStart, y $yStart, 宽度 $width 高度 $height 颜色 $color"
+    //% block="oled画实心矩形 位置x $xStart, y $yStart, 宽度 $width 高度 $height 颜色 $color"
+    //% weight=90
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         clearRectArea(xStart, yStart, width, height, color)
         draw()
