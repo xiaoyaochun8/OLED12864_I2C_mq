@@ -641,7 +641,7 @@ namespace OLED12864_I2C {
      * @param step 间隔
      * @param color 颜色 1亮 0灭
      */
-    //% block="oled画竖线 起点位置x0 $x0 y0 $y0 终点位置x1 $x1 y1 $y1 颜色 $color 间隔 $step"
+    //% block="oled画直线 起点位置 x0 $x0 y0 $y0 终点位置 x1 $x1 y1 $y1 颜色 $color 间隔 $step"
     //% weight=92
     export function drawLine(
         x0: number, y0: number,
