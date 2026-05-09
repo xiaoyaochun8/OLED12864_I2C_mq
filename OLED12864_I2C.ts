@@ -182,8 +182,8 @@ namespace OLED12864_I2C {
    * @param y is Y alis, eg: 0
    * @param color is dot color, eg: 1
    */
-  //% blockId="OLED12864_I2C_PIXEL" block="set pixel at x %x|y %y|color %color"
-  //% weight=70 blockGap=8
+  //% blockId="OLED12864_I2C_PIXEL" block="oled画点 位置 x %x|y %y|color %color"
+  //% weight=95 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function pixel(x: number, y: number, color: number = 1) {
     let page = y >> 3;
@@ -213,8 +213,8 @@ namespace OLED12864_I2C {
    * @param s is the text will be show, eg: 'Hello!'
    * @param color is string color, eg: 1
    */
-  //% blockId="OLED12864_I2C_SHOWSTRING" block="show string at x %x|y %y|text %s|color %color"
-  //% weight=80 blockGap=8
+  //% blockId="OLED12864_I2C_SHOWSTRING" block="oled显示英文字符 位置 x %x|y %y|text %s|color %color"
+  //% weight=97 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showString(
     x: number,
@@ -252,8 +252,8 @@ namespace OLED12864_I2C {
    * @param num is the number will be show, eg: 12
    * @param color is number color, eg: 1
    */
-  //% blockId="OLED12864_I2C_NUMBER" block="show a Number at x %x|y %y|number %num|color %color"
-  //% weight=80 blockGap=8
+  //% blockId="OLED12864_I2C_NUMBER" block="oled显示数字 位置 x %x|y %y|number %num|color %color"
+  //% weight=98 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showNumber(
     x: number,
@@ -344,8 +344,8 @@ namespace OLED12864_I2C {
   /**
    * clear screen
    */
-  //% blockId="OLED12864_I2C_CLEAR" block="clear"
-  //% weight=63 blockGap=8
+  //% blockId="OLED12864_I2C_CLEAR" block="oled清空屏幕"
+  //% weight=99 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function clear() {
     _screen.fill(0);
@@ -356,8 +356,8 @@ namespace OLED12864_I2C {
   /**
    * turn on screen
    */
-  //% blockId="OLED12864_I2C_ON" block="turn on"
-  //% weight=62 blockGap=8
+  //% blockId="OLED12864_I2C_ON" block="oled打开屏幕"
+  //% weight=50 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function on() {
     cmd1(0xaf);
@@ -366,8 +366,8 @@ namespace OLED12864_I2C {
   /**
    * turn off screen
    */
-  //% blockId="OLED12864_I2C_OFF" block="turn off"
-  //% weight=61 blockGap=8
+  //% blockId="OLED12864_I2C_OFF" block="oled关闭屏幕"
+  //% weight=50 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function off() {
     cmd1(0xae);
@@ -428,7 +428,7 @@ namespace OLED12864_I2C {
    * OLED initialize
    * @param addr is i2c addr, eg: 60
    */
-  //% blockId="OLED12864_I2C_init" block="init OLED with addr %addr"
+  //% blockId="OLED12864_I2C_init" block="oled初始化模块 地址 %addr"
   //% weight=100 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function init(addr: number) {
