@@ -182,7 +182,9 @@ namespace OLED12864_I2C {
    * @param y is Y alis, eg: 0
    * @param color is dot color, eg: 1
    */
-  //% blockId="OLED12864_I2C_PIXEL" block="oled画点 位置 x %x|y %y|color %color"
+  //% blockId="OLED12864_I2C_PIXEL" block="oled画点 位置 x:%x|y:%y|color:%color"
+  //% x.min=0 x.max=127
+  //% y.min=0 y.max=63
   //% weight=95 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function pixel(x: number, y: number, color: number = 1) {
@@ -213,7 +215,7 @@ namespace OLED12864_I2C {
    * @param s is the text will be show, eg: 'Hello!'
    * @param color is string color, eg: 1
    */
-  //% blockId="OLED12864_I2C_SHOWSTRING" block="oled显示英文字符 位置 x %x|y %y|text %s|color %color"
+  //% blockId="OLED12864_I2C_SHOWSTRING" block="oled显示英文字符 %s 位置 x:%x|y:%y|color:%color"
   //% weight=97 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showString(
@@ -252,7 +254,7 @@ namespace OLED12864_I2C {
    * @param num is the number will be show, eg: 12
    * @param color is number color, eg: 1
    */
-  //% blockId="OLED12864_I2C_NUMBER" block="oled显示数字 位置 x %x|y %y|number %num|color %color"
+  //% blockId="OLED12864_I2C_NUMBER" block="oled显示数字 %num 位置 x:%x|y:%y|color:%color"
   //% weight=98 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showNumber(
@@ -271,7 +273,7 @@ namespace OLED12864_I2C {
    * @param len is the length of line, eg: 10
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_HLINE" block="oled画横线 位置 x %x|y %y|number %len|color %color"
+  //% blockId="OLED12864_I2C_HLINE" block="oled画横线 位置 x:%x|y:%y|length:%len|color:%color"
   //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function hline(x: number, y: number, len: number, color: number = 1) {
@@ -285,7 +287,7 @@ namespace OLED12864_I2C {
    * @param len is the length of line, eg: 10
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_VLINE" block="oled画竖线 位置 x %x|y %y|number %len|color %color"
+  //% blockId="OLED12864_I2C_VLINE" block="oled画竖线 位置 x:%x|y:%y|length:%len|color:%color"
   //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function vline(x: number, y: number, len: number, color: number = 1) {
@@ -300,7 +302,7 @@ namespace OLED12864_I2C {
    * @param y2 is Y alis, eg: 30
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_RECT" block="oled画空心矩形 位置 x1 %x1|y1 %y1|x2 %x2|y2 %y2|color %color"
+  //% blockId="OLED12864_I2C_RECT" block="oled画空心矩形 位置 x1:%x1|y1:%y1|x2:%x2|y2:%y2|color:%color"
   //% weight=91 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function rect(
@@ -392,7 +394,7 @@ namespace OLED12864_I2C {
    * @param color is the color of the circle, eg: 1
    */
   //% blockId="OLED12864_I2C_OUTLINEDCIRCLE"
-  //% block="oled画实心圆形 位置 x %x|y %y|radius %r|color %color"
+  //% block="oled画实心圆形 位置 x:%x|y:%y|radius:%r|color:%color"
   //% weight=88 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function outlinedCircle(x: number, y: number, r: number, color: number = 1) {
@@ -411,7 +413,7 @@ namespace OLED12864_I2C {
    * @param color is the color of the circle, eg: 1
    */
   //% blockId="OLED12864_I2C_FILLEDCIRCLE"
-  //% block="oled画空心圆形 位置 x %x|y %y|radius %r|color %color"
+  //% block="oled画空心圆形 位置 x:%x|y:%y|radius:%r|color:%color"
   //% weight=89 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function filledCircle(x: number, y: number, r: number, color: number = 1) {
@@ -578,7 +580,7 @@ namespace OLED12864_I2C {
     /**
      * expand block
      */
-    //% block="oled画实心矩形 位置 x $xStart|y $yStart|宽度 $width|高度 $height|颜色 $color"
+    //% block="oled画实心矩形 位置 x:$xStart|y:$yStart|width:$width|height:$height|color:$color"
     //% weight=90
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
         clearRectArea(xStart, yStart, width, height, color)
@@ -656,7 +658,7 @@ namespace OLED12864_I2C {
         return pts;
         // serial.writeLine(`x=${pts.x}, y=${pts.y}`);
     }
-	//% block="oled画直线 起点位置 x0 $x0|y0 $y0|终点位置 x1 $x1|y1 $y1|颜色 $color|间隔 $step"
+    //% block="oled画直线 起点位置 x0:$x0|y0:$y0|终点位置 x1:$x1|y1:$y1|color:$color|step:$step"
     //% weight=92
     export function drawLine(
         x0: number, y0: number,
