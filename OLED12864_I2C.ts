@@ -524,7 +524,7 @@ namespace OLED12864_I2C {
         //setScreen()
         //draw()
     }
-    export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
+    export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
         for (let y = yStart; y < yStart + height; y++) {
             for (let x = xStart; x < xStart + width; x++) {
                 setPixelData(x, y, color);
@@ -604,7 +604,7 @@ namespace OLED12864_I2C {
     //% xStart.min=0 xStart.max=127
     //% yStart.min=0 yStart.max=63
     //% weight=90
-    export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 0): void {
+    export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
         clearRectArea(xStart, yStart, width, height, color)
         draw()
     }
