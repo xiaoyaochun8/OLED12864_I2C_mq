@@ -310,20 +310,24 @@ namespace OLED12864_I2C {
    * @param y2 is Y alis, eg: 30
    * @param color is line color, eg: 1
    */
-  //% blockId="OLED12864_I2C_RECT" block="oled画空心矩形 位置 x1:%x1|y1:%y1|x2:%x2|y2:%y2|color:%color"
-  //% x1.min=0 x1.max=127
-  //% y1.min=0 y1.max=63
-  //% x2.min=0 x2.max=127
-  //% y2.min=0 y2.max=63
+  //% blockId="OLED12864_I2C_RECT" block="oled画空心矩形 位置 x:%x|y:%y|width:%width|height:%height|color:%color"
+  //% x.min=0 x.max=127
+  //% y.min=0 y.max=63
+  //% width.min=0 width.max=127
+  //% height.min=0 height.max=63
   //% weight=91 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function rect(
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
     color: number = 1
   ) {
+    let x1 = x
+    let y1 = y
+    let x2 = x1 + width
+    let y2 = x1 + height
     if (x1 > x2) x1 = [x2, (x2 = x1)][0];
     if (y1 > y2) y1 = [y2, (y2 = y1)][0];
     hline(x1, y1, x2 - x1 + 1, color);
@@ -679,6 +683,8 @@ namespace OLED12864_I2C {
     //% block="oled画直线 起点位置 x0:$x0|y0:$y0|终点位置 x1:$x1|y1:$y1|color:$color|step:$step"
     //% x0.min=0 x0.max=127
     //% y0.min=0 y0.max=63
+    //% x1.min=0 x1.max=127
+    //% y1.min=0 y1.max=63
     //% weight=92
     export function drawLine(
         x0: number, y0: number,
