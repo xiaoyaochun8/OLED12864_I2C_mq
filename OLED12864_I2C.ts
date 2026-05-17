@@ -221,9 +221,9 @@ namespace OLED12864_I2C {
   //% weight=97 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showString(
-    x: number,
-    y: number,
-    s: string,
+    x: number = 0,
+    y: number = 0,
+    s: string = 'abc',
     color: number = 1
   ) {
     let col = 0;
@@ -262,9 +262,9 @@ namespace OLED12864_I2C {
   //% weight=98 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showNumber(
-    x: number,
+    x: number = 0,
     y: number = 0,
-    num: number,
+    num: number = 123,
     color: number = 1
   ) {
     showString(x, y, num.toString(), color);
@@ -282,7 +282,7 @@ namespace OLED12864_I2C {
   //% y.min=0 y.max=63
   //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
-  export function hline(x: number, y: number, len: number, color: number = 1) {
+  export function hline(x: number, y: number, len: number = 10, color: number = 1) {
     for (let i = x; i < x + len; i++) pixel(i, y, color);
   }
 
@@ -298,7 +298,7 @@ namespace OLED12864_I2C {
   //% y.min=0 y.max=63
   //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
-  export function vline(x: number, y: number, len: number, color: number = 1) {
+  export function vline(x: number, y: number, len: number = 10, color: number = 1) {
     for (let i = y; i < y + len; i++) pixel(x, i, color);
   }
 
@@ -320,8 +320,8 @@ namespace OLED12864_I2C {
   export function rect(
     x: number,
     y: number,
-    width: number,
-    height: number,
+    width: number = 10,
+    height: number = 10,
     color: number = 1
   ) {
     let x1 = x
@@ -415,7 +415,7 @@ namespace OLED12864_I2C {
   //% y.min=0 y.max=63
   //% weight=88 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
-  export function outlinedCircle(x: number, y: number, r: number, color: number = 1) {
+  export function outlinedCircle(x: number, y: number, r: number = 10, color: number = 1) {
       const step = 1 / r;
       for (let theta = 0; theta < 2 * Math.PI; theta += step) {
           let xPos = x + Math.round(r * Math.cos(theta));
@@ -436,7 +436,7 @@ namespace OLED12864_I2C {
   //% y.min=0 y.max=63
   //% weight=89 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
-  export function filledCircle(x: number, y: number, r: number, color: number = 1) {
+  export function filledCircle(x: number, y: number, r: number = 10, color: number = 1) {
       for (let j = 0; j <= r; j++) {
           const step = 1 / j;
           for (let theta = 0; theta < 2 * Math.PI; theta += step) {
@@ -604,7 +604,7 @@ namespace OLED12864_I2C {
     //% xStart.min=0 xStart.max=127
     //% yStart.min=0 yStart.max=63
     //% weight=90
-    export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
+    export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number = 10, height: number = 10, color: number = 1): void {
         clearRectArea(xStart, yStart, width, height, color)
         draw()
     }
@@ -688,7 +688,7 @@ namespace OLED12864_I2C {
     //% weight=92
     export function drawLine(
         x0: number, y0: number,
-        x1: number, y1: number,
+        x1: number = 10, y1: number = 10,
         step: number = 1,
         color: number = 1
     ): void {
