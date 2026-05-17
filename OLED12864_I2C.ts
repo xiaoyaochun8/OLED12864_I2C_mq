@@ -212,7 +212,7 @@ namespace OLED12864_I2C {
    * show text in OLED
    * @param x is X alis, eg: 0
    * @param y is Y alis, eg: 0
-   * @param s is the text will be show, eg: 'Hello!'
+   * @param s is the text will be show, eg: '0'
    * @param color is string color, eg: 1
    */
   //% blockId="OLED12864_I2C_SHOWSTRING" block="oled显示英文字符 %s 位置 x:%x|y:%y|color:%color"
@@ -253,7 +253,7 @@ namespace OLED12864_I2C {
    * show a number in OLED
    * @param x is X alis, eg: 0
    * @param y is Y alis, eg: 0
-   * @param num is the number will be show, eg: 12
+   * @param num is the number will be show, eg: 0
    * @param color is number color, eg: 1
    */
   //% blockId="OLED12864_I2C_NUMBER" block="oled显示数字 %num 位置 x:%x|y:%y|color:%color"
@@ -263,7 +263,7 @@ namespace OLED12864_I2C {
   //% parts=OLED12864_I2C trackArgs=0
   export function showNumber(
     x: number,
-    y: number,
+    y: number = 0,
     num: number,
     color: number = 1
   ) {
@@ -274,7 +274,7 @@ namespace OLED12864_I2C {
    * draw a horizontal line
    * @param x is X alis, eg: 0
    * @param y is Y alis, eg: 0
-   * @param len is the length of line, eg: 10
+   * @param len is the length of line, eg: 0
    * @param color is line color, eg: 1
    */
   //% blockId="OLED12864_I2C_HLINE" block="oled画横线 位置 x:%x|y:%y|length:%len|color:%color"
@@ -290,7 +290,7 @@ namespace OLED12864_I2C {
    * draw a vertical line
    * @param x is X alis, eg: 0
    * @param y is Y alis, eg: 0
-   * @param len is the length of line, eg: 10
+   * @param len is the length of line, eg: 0
    * @param color is line color, eg: 1
    */
   //% blockId="OLED12864_I2C_VLINE" block="oled画竖线 位置 x:%x|y:%y|length:%len|color:%color"
@@ -406,7 +406,7 @@ namespace OLED12864_I2C {
    * draw an outlined circle
    * @param x is the x coordinate of the center, eg: 0
    * @param y is the y coordinate of the center, eg: 0
-   * @param r is the radius of the circle, eg: 10
+   * @param r is the radius of the circle, eg: 0
    * @param color is the color of the circle, eg: 1
    */
   //% blockId="OLED12864_I2C_OUTLINEDCIRCLE"
@@ -427,7 +427,7 @@ namespace OLED12864_I2C {
    * draw a filled circle
    * @param x is the x coordinate of the center, eg: 0
    * @param y is the y coordinate of the center, eg: 0
-   * @param r is the radius of the circle, eg: 10
+   * @param r is the radius of the circle, eg: 0
    * @param color is the color of the circle, eg: 1
    */
   //% blockId="OLED12864_I2C_FILLEDCIRCLE"
