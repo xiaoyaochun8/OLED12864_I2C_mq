@@ -268,7 +268,7 @@ namespace OLED12864_I2C {
     y: number = 0,
     color: number = 1
   ) {
-    showString(x, y, num.toString(), color);
+      showString(num.toString(), x, y, color);
   }
 
   /**
