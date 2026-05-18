@@ -4,7 +4,7 @@
  * http://www.micropython.org.cn
  */
 
-//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-4"
+//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-5"
 namespace OLED12864_I2C {
   let font: number[] = [];
   font[0] = 0x0022d422;
@@ -210,9 +210,9 @@ namespace OLED12864_I2C {
 
   /**
    * show text in OLED
+   * @param s is the text will be show, eg: 'abc'
    * @param x is X alis, eg: 0
    * @param y is Y alis, eg: 0
-   * @param s is the text will be show, eg: '0'
    * @param color is string color, eg: 1
    */
   //% blockId="OLED12864_I2C_SHOWSTRING" block="oled显示英文字符 %s 位置 x:%x|y:%y|color:%color"
@@ -221,9 +221,9 @@ namespace OLED12864_I2C {
   //% weight=97 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showString(
+    s: string = 'abc',
     x: number = 0,
     y: number = 0,
-    s: string = 'abc',
     color: number = 1
   ) {
     let col = 0;
@@ -316,8 +316,8 @@ namespace OLED12864_I2C {
   //% blockId="OLED12864_I2C_RECT" block="oled画空心矩形 位置 x:%x|y:%y|width:%width|height:%height|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
-  //% width.min=0 width.max=127
-  //% height.min=0 height.max=63
+  //% width.min=0 width.max=127 width.defl=10
+  //% height.min=0 height.max=63 height.defl=10
   //% weight=91 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function rect(
@@ -608,6 +608,7 @@ namespace OLED12864_I2C {
     //% block="oled画实心矩形 位置 x:$xStart|y:$yStart|width:$width|height:$height|color:$color"
     //% xStart.min=0 xStart.max=127
     //% yStart.min=0 yStart.max=63
+    //% width.defl=10 height.defl=10
     //% weight=90
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number = 10, height: number = 10, color: number = 1): void {
         clearRectArea(xStart, yStart, width, height, color)
@@ -690,6 +691,8 @@ namespace OLED12864_I2C {
     //% y0.min=0 y0.max=63
     //% x1.min=0 x1.max=127 x1.defl=10
     //% y1.min=0 y1.max=63 y1.defl=10
+    //% step.defl=0
+    //% color.defl=1
     //% weight=92
     export function drawLine(
         x0: number, y0: number,
