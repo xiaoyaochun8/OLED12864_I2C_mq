@@ -4,7 +4,7 @@
  * http://www.micropython.org.cn
  */
 
-//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-5"
+//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-6"
 namespace OLED12864_I2C {
   let font: number[] = [];
   font[0] = 0x0022d422;
@@ -608,7 +608,7 @@ namespace OLED12864_I2C {
     //% block="oled画实心矩形 位置 x:$xStart|y:$yStart|width:$width|height:$height|color:$color"
     //% xStart.min=0 xStart.max=127
     //% yStart.min=0 yStart.max=63
-    //% width.defl=10 height.defl=10
+    //% width.defl=10 height.defl=10 color.defl=1
     //% weight=90
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number = 10, height: number = 10, color: number = 1): void {
         clearRectArea(xStart, yStart, width, height, color)
