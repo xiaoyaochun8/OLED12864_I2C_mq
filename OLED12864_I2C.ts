@@ -4,7 +4,7 @@
  * http://www.micropython.org.cn
  */
 
-//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-3"
+//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-4"
 namespace OLED12864_I2C {
   let font: number[] = [];
   font[0] = 0x0022d422;
@@ -281,6 +281,7 @@ namespace OLED12864_I2C {
   //% blockId="OLED12864_I2C_HLINE" block="oled画横线 位置 x:%x|y:%y|length:%len|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
+  //% len.defl=10
   //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function hline(x: number, y: number, len: number = 10, color: number = 1) {
@@ -297,6 +298,7 @@ namespace OLED12864_I2C {
   //% blockId="OLED12864_I2C_VLINE" block="oled画竖线 位置 x:%x|y:%y|length:%len|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
+  //% len.defl=10
   //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function vline(x: number, y: number, len: number = 10, color: number = 1) {
@@ -414,6 +416,7 @@ namespace OLED12864_I2C {
   //% block="oled画实心圆形 位置 x:%x|y:%y|radius:%r|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
+  //% r.defl=10
   //% weight=88 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function outlinedCircle(x: number, y: number, r: number = 10, color: number = 1) {
@@ -435,6 +438,7 @@ namespace OLED12864_I2C {
   //% block="oled画空心圆形 位置 x:%x|y:%y|radius:%r|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
+  //% r.defl=10
   //% weight=89 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function filledCircle(x: number, y: number, r: number = 10, color: number = 1) {
@@ -684,8 +688,8 @@ namespace OLED12864_I2C {
     //% block="oled画直线 起点位置 x0:$x0|y0:$y0|终点位置 x1:$x1|y1:$y1|color:$color|step:$step"
     //% x0.min=0 x0.max=127
     //% y0.min=0 y0.max=63
-    //% x1.min=0 x1.max=127
-    //% y1.min=0 y1.max=63
+    //% x1.min=0 x1.max=127 x1.defl=10
+    //% y1.min=0 y1.max=63 y1.defl=10
     //% weight=92
     export function drawLine(
         x0: number, y0: number,
