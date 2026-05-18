@@ -4,7 +4,7 @@
  * http://www.micropython.org.cn
  */
 
-//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-2"
+//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-3"
 namespace OLED12864_I2C {
   let font: number[] = [];
   font[0] = 0x0022d422;
@@ -263,9 +263,9 @@ namespace OLED12864_I2C {
   //% weight=98 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showNumber(
+    num: number = 123,
     x: number = 0,
     y: number = 0,
-    num: number = 123,
     color: number = 1
   ) {
     showString(x, y, num.toString(), color);
