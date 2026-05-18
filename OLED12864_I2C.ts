@@ -691,7 +691,7 @@ namespace OLED12864_I2C {
     //% y0.min=0 y0.max=63
     //% x1.min=0 x1.max=127 x1.defl=10
     //% y1.min=0 y1.max=63 y1.defl=10
-    //% step.defl=0
+    //% step.defl=1
     //% color.defl=1
     //% weight=92
     export function drawLine(
