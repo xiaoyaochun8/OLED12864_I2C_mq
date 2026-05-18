@@ -4,7 +4,7 @@
  * http://www.micropython.org.cn
  */
 
-//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C"
+//% weight=20 color=#0855AA icon="O" block="OLED12864_I2C-1"
 namespace OLED12864_I2C {
   let font: number[] = [];
   font[0] = 0x0022d422;
@@ -255,6 +255,7 @@ namespace OLED12864_I2C {
    * @param color is number color, eg: 1
    */
   //% blockId="OLED12864_I2C_NUMBER" block="oled显示数字 %num 位置 x:%x|y:%y|color:%color"
+  //% num.defl=123
   //% weight=98 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function showNumber(
