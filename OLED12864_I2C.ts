@@ -598,7 +598,9 @@ namespace OLED12864_I2C {
     //% block="oled画实心矩形 位置 x:$x|y:$y|width:$width|height:$height|color:$color"
     //% x.min=0 x.max=127
     //% y.min=0 y.max=63
-    //% width.defl=10 height.defl=10 color.defl=1
+    //% width.min=0 width.max=127 width.defl=10
+    //% height.min=0 height.max=63 height.defl=10
+    //% color.defl=1
     //% weight=90
     export function filledRect(
         x: number,
