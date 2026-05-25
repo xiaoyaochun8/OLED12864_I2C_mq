@@ -540,27 +540,6 @@ namespace OLED12864_I2C {
         //setScreen()
         //draw()
     }
-    //todo-del
-    export function setPixelData(x: number, y: number, color: number = 1) {
-        let page = y >> 3;
-        let shift_page = y % 8;
-        let ind = x * (0 + 1) + page * 128 + 1;
-        let b = color ? _screen[ind] | (1 << shift_page) : clrbit(_screen[ind], shift_page);
-        _screen[ind] = b;
-        //e.g.
-        //clear()
-        //setPixelData()
-        //draw()
-    }
-    //todo-del
-    export function setOutlinedCircleData(x: number, y: number, r: number, color: number = 1) {
-        const step = 1 / r;
-        for (let theta = 0; theta < 2 * Math.PI; theta += step) {
-            let xPos = x + Math.round(r * Math.cos(theta));
-            let yPos = y + Math.round(r * Math.sin(theta));
-            pixelFast(xPos, yPos, color);
-        }
-    }
     export function setStringData(
       x: number,
       y: number,
@@ -592,7 +571,7 @@ namespace OLED12864_I2C {
     /**
      * Create a 128x64 pixel matrix for use as a custom character.
      */
-    export function oledDrawImgWithPixels12864(im: Image): void {
+    export function drawImgWithPixels12864(im: Image): void {
         for (let y = 0; y < 64; y++) {
             for (let x = 0; x < 128; x++) {
                 if (im.pixel(x, y)) {
@@ -626,22 +605,6 @@ namespace OLED12864_I2C {
             }
         }
         draw()
-    }
-    //todo-del
-    export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number = 10, height: number = 10, color: number = 1): void {
-        clearRectArea(xStart, yStart, width, height, color)
-        draw()
-    }
-    //todo-del
-    export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
-        for (let y = yStart; y < yStart + height; y++) {
-            for (let x = xStart; x < xStart + width; x++) {
-                pixelFast(x, y, color);
-            }
-        }
-        //e.g.
-        //clearRectArea()
-        //draw()
     }
     /**
      * 生成两点之间的直线坐标，支持点间隔（步长）
