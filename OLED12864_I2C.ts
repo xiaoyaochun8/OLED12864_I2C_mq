@@ -207,6 +207,17 @@ namespace OLED12864_I2C {
       pins.i2cWriteBuffer(_I2CAddr, _buf2);
     }
   }
+  export function pixelFast(x: number, y: number, color: number = 1) {
+    let page = y >> 3;
+    let shift_page = y % 8;
+    let ind = x * (0 + 1) + page * 128 + 1;
+    let b = color ? _screen[ind] | (1 << shift_page) : clrbit(_screen[ind], shift_page);
+    _screen[ind] = b;
+    //e.g.
+    //clear()
+    //pixelFast()
+    //draw()
+  }
 
   /**
    * show text in OLED
@@ -285,7 +296,7 @@ namespace OLED12864_I2C {
   //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function hline(x: number, y: number, len: number = 10, color: number = 1) {
-    for (let i = x; i < x + len; i++) pixel(i, y, color);
+    for (let i = x; i < x + len; i++) pixelFast(i, y, color);
   }
 
   /**
@@ -302,7 +313,7 @@ namespace OLED12864_I2C {
   //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function vline(x: number, y: number, len: number = 10, color: number = 1) {
-    for (let i = y; i < y + len; i++) pixel(x, i, color);
+    for (let i = y; i < y + len; i++) pixelFast(x, i, color);
   }
 
   /**
@@ -424,7 +435,7 @@ namespace OLED12864_I2C {
       for (let theta = 0; theta < 2 * Math.PI; theta += step) {
           let xPos = x + Math.round(r * Math.cos(theta));
           let yPos = y + Math.round(r * Math.sin(theta));
-          pixel(xPos, yPos, color);
+          pixelFast(xPos, yPos, color);
       }
   }
   /**
@@ -447,7 +458,7 @@ namespace OLED12864_I2C {
           for (let theta = 0; theta < 2 * Math.PI; theta += step) {
               let xPos = x + Math.round(j * Math.cos(theta));
               let yPos = y + Math.round(j * Math.sin(theta));
-              pixel(xPos, yPos, color);
+              pixelFast(xPos, yPos, color);
           }
       }
   }
@@ -532,7 +543,7 @@ namespace OLED12864_I2C {
     export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
         for (let y = yStart; y < yStart + height; y++) {
             for (let x = xStart; x < xStart + width; x++) {
-                setPixelData(x, y, color);
+                pixelFast(x, y, color);
             }
         }
         //e.g.
@@ -555,7 +566,7 @@ namespace OLED12864_I2C {
         for (let theta = 0; theta < 2 * Math.PI; theta += step) {
             let xPos = x + Math.round(r * Math.cos(theta));
             let yPos = y + Math.round(r * Math.sin(theta));
-            setPixelData(xPos, yPos, color);
+            pixelFast(xPos, yPos, color);
         }
     }
     export function setStringData(
@@ -593,7 +604,7 @@ namespace OLED12864_I2C {
         for (let y = 0; y < 64; y++) {
             for (let x = 0; x < 128; x++) {
                 if (im.pixel(x, y)) {
-                    setPixelData(x, y, 1)
+                    pixelFast(x, y, 1)
                 }
             }
         }
@@ -680,7 +691,7 @@ namespace OLED12864_I2C {
         const pts = getLinePoints(x0, y0, x1, y1, step);
         // 实际画点
         for (const p of pts) {
-            setPixelData(p.x, p.y, color)
+            pixelFast(p.x, p.y, color)
         }
         draw()
         return pts;
@@ -703,7 +714,7 @@ namespace OLED12864_I2C {
         const pts = getLinePoints(x0, y0, x1, y1, step);
         // 实际画点
         for (const p of pts) {
-            setPixelData(p.x, p.y, color)
+            pixelFast(p.x, p.y, color)
         }
         draw()
     }
