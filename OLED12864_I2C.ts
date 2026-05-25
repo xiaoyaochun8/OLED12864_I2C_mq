@@ -296,7 +296,10 @@ namespace OLED12864_I2C {
   //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function hline(x: number, y: number, len: number = 10, color: number = 1) {
-    for (let i = x; i < x + len; i++) pixelFast(i, y, color);
+    for (let i = x; i < x + len; i++) {
+        pixelFast(i, y, color);
+    }
+    draw();
   }
 
   /**
@@ -313,7 +316,10 @@ namespace OLED12864_I2C {
   //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function vline(x: number, y: number, len: number = 10, color: number = 1) {
-    for (let i = y; i < y + len; i++) pixelFast(x, i, color);
+    for (let i = y; i < y + len; i++) {
+        pixelFast(x, i, color);
+    }
+    draw();
   }
 
   /**
@@ -437,6 +443,7 @@ namespace OLED12864_I2C {
           let yPos = y + Math.round(r * Math.sin(theta));
           pixelFast(xPos, yPos, color);
       }
+      draw();
   }
   /**
    * draw a filled circle
@@ -461,6 +468,7 @@ namespace OLED12864_I2C {
               pixelFast(xPos, yPos, color);
           }
       }
+      draw();
   }
   /**
    * OLED initialize
@@ -599,9 +607,13 @@ namespace OLED12864_I2C {
         height: number = 10,
         color: number = 1
     ): void {
-        for (let y = yStart; y < yStart + height; y++) {
-            for (let x = xStart; x < xStart + width; x++) {
-                pixelFast(x, y, color);
+        let x1 = x
+        let y1 = y
+        let x2 = x1 + width
+        let y2 = y1 + height
+        for (let y = y1; y < y2; y++) {
+            for (let x = x1; x < x2; x++) {
+                pixelFast(x, y, color)
             }
         }
         draw()
