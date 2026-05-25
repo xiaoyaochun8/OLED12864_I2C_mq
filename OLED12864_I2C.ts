@@ -540,16 +540,7 @@ namespace OLED12864_I2C {
         //setScreen()
         //draw()
     }
-    export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
-        for (let y = yStart; y < yStart + height; y++) {
-            for (let x = xStart; x < xStart + width; x++) {
-                pixelFast(x, y, color);
-            }
-        }
-        //e.g.
-        //clearRectArea()
-        //draw()
-    }
+    //todo-del
     export function setPixelData(x: number, y: number, color: number = 1) {
         let page = y >> 3;
         let shift_page = y % 8;
@@ -561,6 +552,7 @@ namespace OLED12864_I2C {
         //setPixelData()
         //draw()
     }
+    //todo-del
     export function setOutlinedCircleData(x: number, y: number, r: number, color: number = 1) {
         const step = 1 / r;
         for (let theta = 0; theta < 2 * Math.PI; theta += step) {
@@ -616,14 +608,40 @@ namespace OLED12864_I2C {
     /**
      * expand block
      */
-    //% block="oled画实心矩形 位置 x:$xStart|y:$yStart|width:$width|height:$height|color:$color"
-    //% xStart.min=0 xStart.max=127
-    //% yStart.min=0 yStart.max=63
+    //% block="oled画实心矩形 位置 x:$x|y:$y|width:$width|height:$height|color:$color"
+    //% x.min=0 x.max=127
+    //% y.min=0 y.max=63
     //% width.defl=10 height.defl=10 color.defl=1
     //% weight=90
+    export function filledRect(
+        x: number,
+        y: number,
+        width: number = 10,
+        height: number = 10,
+        color: number = 1
+    ): void {
+        for (let y = yStart; y < yStart + height; y++) {
+            for (let x = xStart; x < xStart + width; x++) {
+                pixelFast(x, y, color);
+            }
+        }
+        draw()
+    }
+    //todo-del
     export function oledDrawRectAreaClean(xStart: number, yStart: number, width: number = 10, height: number = 10, color: number = 1): void {
         clearRectArea(xStart, yStart, width, height, color)
         draw()
+    }
+    //todo-del
+    export function clearRectArea(xStart: number, yStart: number, width: number, height: number, color: number = 1): void {
+        for (let y = yStart; y < yStart + height; y++) {
+            for (let x = xStart; x < xStart + width; x++) {
+                pixelFast(x, y, color);
+            }
+        }
+        //e.g.
+        //clearRectArea()
+        //draw()
     }
     /**
      * 生成两点之间的直线坐标，支持点间隔（步长）
