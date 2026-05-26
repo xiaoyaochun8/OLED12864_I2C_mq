@@ -292,7 +292,7 @@ namespace OLED12864_I2C {
   //% blockId="OLED12864_I2C_HLINE" block="oled画横线 位置 x:%x|y:%y|length:%len|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
-  //% len.defl=10
+  //% len.min=0 len.max=127 len.defl=10
   //% weight=94 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function hline(x: number, y: number, len: number = 10, color: number = 1) {
@@ -312,7 +312,7 @@ namespace OLED12864_I2C {
   //% blockId="OLED12864_I2C_VLINE" block="oled画竖线 位置 x:%x|y:%y|length:%len|color:%color"
   //% x.min=0 x.max=127
   //% y.min=0 y.max=63
-  //% len.defl=10
+  //% len.min=0 len.max=63 len.defl=10
   //% weight=93 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function vline(x: number, y: number, len: number = 10, color: number = 1) {
@@ -433,7 +433,7 @@ namespace OLED12864_I2C {
   //% block="oled画空心圆形 位置 x:%x|y:%y|radius:%r|color:%color"
   //% x.min=0 x.max=127 x.defl=30
   //% y.min=0 y.max=63 y.defl=20
-  //% r.defl=10
+  //% r.min=0 r.max=31 r.defl=10
   //% weight=89 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function outlinedCircle(x: number, y: number, r: number = 10, color: number = 1) {
@@ -456,7 +456,7 @@ namespace OLED12864_I2C {
   //% block="oled画实心圆形 位置 x:%x|y:%y|radius:%r|color:%color"
   //% x.min=0 x.max=127 x.defl=30
   //% y.min=0 y.max=63 y.defl=20
-  //% r.defl=10
+  //% r.min=0 r.max=31 r.defl=10
   //% weight=88 blockGap=8
   //% parts=OLED12864_I2C trackArgs=0
   export function filledCircle(x: number, y: number, r: number = 10, color: number = 1) {
